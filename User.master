@@ -1,0 +1,356 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="User.master.cs" Inherits="User" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .col-size-logo {
+    width: 30% !important;
+    float: left;
+}
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div id="header"> <!-- Page Header Start -->
+		<div class="top-menu-mob"> <!-- Top Line Mobile Start -->
+			<div class="header-top-mob">
+				<button class="mnu_container" id="js-mnu_container">
+					<span class="sandwich">
+						<span class="sw-topper"></span>
+						<span class="sw-bottom"></span>
+						<span class="sw-footer"></span>
+					</span>
+				</button>
+				<div class="mnu-popup-mob" id="mnu-popup-mob">
+					<div class="header-top-mob">
+						<div class="logo-popup-mob"><a href="index-2.html">eCom</a></div>
+					</div>
+					<nav class="mnu-toggle" id="mnu-toggle">
+						
+						<ul>
+							<li ><a href="Homepage.aspx">Home</a>
+							</li>
+							<li><a class="level-two" href="#">About<i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul>
+								<li><a href="Employee.aspx">Employee</a></li>
+								<li><a href="page_privacy_policy.html">Privacy Policy</a></li>
+							</ul>
+						</li>
+						<li><a href="page_contacts.html">Contact</a></li>
+						<li><a href="page_faq.html">FAQ</a></li>
+						<li ><a class="level-two" href="#">Language<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+							<ul>
+								<li><a href="#">English</a></li>
+								<li><a href="#">Russian</a></li>
+								<li><a href="#">German</a></li>
+							</ul>
+						</li>
+						<li><a href="Cart.aspx">Cart</a></li>
+						<li><a href="Registration.aspx">My Account</a></li>
+						<li><a id="js-account-mob" href="Login.aspx">Sign in</a></li>
+					</ul>
+
+					<ul>
+					
+						<li><a href="Product.aspx">Accessories</a></li>
+					
+						
+					</ul>
+
+
+
+				</nav>
+			</div>
+			
+		 
+		</div>
+	</div> <!-- Top Line Mobile End -->
+	<div class="header-top"> <!-- Top Menu Desktop  Start-->
+		<div class="box-1675">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="top-left" id="top-left">
+						<ul>
+							<li ><a href="Homepage.aspx">Home</a>
+							</li>
+							
+							<li><a href="Aboutus.aspx">About</a></li>
+							<li><a href="Contact_us.aspx">Contact</a></li>
+						</ul>
+					</div>
+					<div class="top-right" id="top-right">
+						<ul runat="server" id="employe"  visible="false">
+								<li runat="server" id="Li3"><a href="View_ticket.aspx">My Tickes</a></li>
+						     <li>
+                             <asp:Label ID="Label1" runat="server"></asp:Label></li>
+                            	<li runat="server" id="Logout"><a href="Logout.aspx">Sign Out</a></li>
+						<li  runat="server" id="Login"><a href="Login.aspx">Sign in</a></li>
+					</ul>
+                        <ul runat="server" id="customer" visible="false">
+						<li runat="server" id="myticket"><a href="View_ticket.aspx">My Tickes</a></li>
+                        <li runat="server" id="myproduct"><a href="Order.aspx">My Order</a></li>
+                        <li runat="server" id="myccoiuny"><a href="changepass.aspx">My Account</a></li>
+						<li runat="server" id="mycart"><a href="Cart.aspx">My Cart</a></li>
+
+                        
+					
+                            <li>
+                             <asp:Label ID="Labelsession" runat="server"></asp:Label></li>
+                            	<li runat="server" id="signout"><a href="Logout.aspx">Sign Out</a></li>
+						<li  runat="server" id="signin"><a href="Login.aspx">Sign in</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> <!-- Top Menu Desktop  End-->
+<div class="header-center"> <!-- Center Menu Desktop  Start-->
+	<div class="box-1675">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-size-logo" id="col-size-logo">
+					<a href="#" class="logo">Masters Mind</a>
+				</div>
+				<%--<div class="col-size-search" id="col-size-search">
+						<div class="box-search" id="box-search"></div>
+					<div class="wrap-allcat" id="wrapallcat" runat="server">
+						<select id="cat-select-menu" class="cat-select-menu">
+							<option>My Account</option>
+							<option><a href="View_ticket.aspx">My Tickets</a></option>
+							<option>My Products</option>
+							
+						</select>
+					</div>
+				</div>
+				--%>
+                <div class="col-size-buy" id="col-size-buy">
+					
+							<a href="page_cart-step-one.html" class="box-basket">
+								<div class="basket-price">$5458</div>
+								<div class="basket-count-buy"><span>2</span></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- Center Menu Desktop  End-->
+		<!-- Center Menu Desktop  End-->
+
+		<!-- Bottom Menu Desktop  Start-->
+		<div class="header-bottom">
+			<div class="box-1675">
+
+				<div class="col-md-12">
+					<div class="row">
+						<div class="main-menu">
+							<ul class="ul-main-menu">
+								<asp:Repeater ID="Repeater1" runat="server">
+                                    <ItemTemplate>
+							<li><a href="Product.aspx?cid=<%# Eval("categ_id") %>"><%# Eval("categ_name") %></a></li>
+							</ItemTemplate>
+								</asp:Repeater>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bottom Menu Desktop  End-->
+			</div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div id="footer"><!-- Page Footer Start -->
+	<div class="footer">
+		<div class="box-1675">
+			<div class="container-fluid">
+				<div class="row box-title-footer">
+					<div class="col-md-2 col-sm-2"><div class="title-footer">Master Mind</div></div>
+					<div class="col-md-2 col-sm-2"><div class="title-footer">Categories</div></div>
+					<div class="col-md-2 col-sm-2"><div class="title-footer">Information</div></div>
+					<div class="col-md-2 col-sm-2"><div class="title-footer">My Account</div></div>
+					<div class="col-md-2 col-sm-2"><div class="title-footer">Help & Contact</div></div>
+				</div>
+				<div class="row">
+					<div class="hr-footer"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 col-sm-2 text-footer"> 
+						<ul>
+							<li><a href="product_accessories.html">Products</a></li>
+							<li><a href="page_wish-list.html">Wishlist</a></li>
+						</ul> 
+					</div>
+					<div class="col-md-2 col-sm-2 text-footer"> 
+						<ul>
+								<li><a href="index-2.html">Routers</a></li>
+								<li><a href="product_accessories.html">Camera</a></li>
+								<li><a href="product_gadgets.html">Scanner</a></li>
+								<li><a href="product_laptops.html">Tool Kit</a></li>
+						</ul> 
+					</div>
+					<div class="col-md-2 col-sm-2 text-footer"> 
+						<ul>
+							<li><a href="page_404.html">404</a></li>
+							<li><a href="page_cart-step-empty.html">Cart empty</a></li>
+							<li><a href="page_delivery.html">Delivery</a></li>
+											</ul> 
+					</div>
+					
+					<div class="col-md-2 col-sm-2 text-footer"> 
+						<ul>
+							<li><a href="Registration.aspx">Personal Infromation</a></li>
+						<li><a href="">Wishlist</a></li>
+						</ul> 
+					</div>
+					<div class="col-md-2 col-sm-2 text-footer"> 
+						<ul>
+							<li><a href="page_faq.html">FAQ</a></li>
+							<li><a href="page_privacy_policy.html">Privacy policy</a></li>	
+							<li><a href="page_contacts.html">Contact us</a></li>
+							<li><a href="page_about-us.html">About us</a></li>
+						</ul> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-mob">
+		<div class="container">
+			<div class="row" id="js-footer-item">
+				<div class="footer-wrap-mob">
+					<div class="title-footer-wrap-mob">Master Mind</div>
+					<ul>
+						<li><a href="product_accessories.html">Products</a></li>
+						<li><a href="page_cart-step-one.html">Cart</a></li>
+						<li><a href="page_cart-step-two.html">Check Out</a></li>
+						<li><a href="page_compare.html">Cart Update</a></li>
+
+					</ul>
+				</div>
+				<div class="footer-wrap-mob">
+					<div class="title-footer-wrap-mob">Categories</div>
+					<ul>
+							<li><a href="index-2.html">Manufacturer</a></li>
+							<li><a href="product_accessories.html">Accessories</a></li>
+							<li><a href="product_gadgets.html">Gadgets</a></li>
+							<li><a href="product_laptops.html">Laptops</a></li>
+							<li><a href="product_computers.html">Computers</a></li>
+							<li><a href="product_audio.html">TV &amp; Audio</a></li>
+							<li><a href="product_gps.html">GPS</a></li>
+					</ul>
+				</div>
+				<div class="footer-wrap-mob">
+					<div class="title-footer-wrap-mob">Information</div>
+					<ul>
+						<li><a href="page_404.html">404</a></li>
+						<li><a href="page_cart-step-empty.html">Cart empty</a></li>
+						<li><a href="page_delivery.html">Delivery</a></li>
+						<li><a href="page_opening-soon.html">Opening soon</a></li>
+						<li><a href="page_search-not-found.html">Search not found</a></li>
+						<li><a href="page_discont.html">Discount</a></li>
+					</ul>
+				</div>
+				<div class="footer-wrap-mob">
+					<div class="title-footer-wrap-mob">Stay connected</div>
+					<ul>
+						<li><a target="_blank" href="https://www.instagram.com/webarksystem/">Instagram</a></li>
+						<li><a target="_blank" href="https://www.facebook.com/WebArk-346789308995961">Facebook</a></li>
+						<li><a target="_blank" href="https://twitter.com/WebarkSystems">Twitter</a></li>
+						<li><a target="_blank" href="https://plus.google.com/u/0/104841685075716062830">Google+</a></li>
+					</ul>
+				</div>
+				<div class="footer-wrap-mob">
+					<div class="title-footer-wrap-mob">My Account</div>
+					<ul>
+						<li><a href="page_account8c58.html?active_tab=0">Personal Infromation</a></li>
+						<li><a href="page_accountc2ff.html?active_tab=1">Address</a></li>
+						<li><a href="page_accountdc73.html?active_tab=2">Orders</a></li>
+						<li><a href="page_account8e66.html?active_tab=3"> Wishlist</a></li>
+					</ul>
+				</div>
+				<div class="footer-wrap-mob">
+					<div class="title-footer-wrap-mob">Help & Contact</div>
+					<ul>
+						<li><a href="page_faq.html">FAQ</a></li>
+						<li><a href="page_privacy_policy.html">Privacy policy</a></li>	
+						<li><a href="page_contacts.html">Contact us</a></li>
+						<li><a href="page_about-us.html">About us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="full-version"><a href="#">Full Version</a></div>
+	<div class="copyright">
+		<div class="box-1675">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="text-copyright">
+						Copyright © 2017 Master Mind. All Rights Reserved
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- Footer End -->	
+</div>
+<div class="main-account" id="main-account"><!-- My Account Popup Start -->
+	<div class="box-account">
+		<div class="close-account-box" id="close-account-box"></div>
+		<div id="tabs_account">
+			<ul>
+				<li><a href="Login.aspx">Sign in</a></li>
+				<li><a href="Registration.aspx">New account</a></li>
+			</ul>
+			<div id="sign_in">
+				<form class="forgot_pass_form" id="forgot_pass_form" action="http://ecom.webark.io/">
+					<p>Lost your password? Enter your email address. You will receive a link to create a new password.</p>
+					<input type="text" placeholder="E-MAIL" class="email">
+
+					<input type="submit" class="button-lardge custom" value="Sign in">
+					<a class="back-log-in" id="back-log-in" href="#">Back to log-in</a>
+				</form>
+				<form class="sign_in_form" id="sign_in_form" action="http://ecom.webark.io/">
+					<input type="text" placeholder="E-MAIL" class="email">
+					<input type="password" placeholder="PASSWORD" class="password">
+					<label>
+						<input class="rem-check" type="checkbox" name="checkbox-sign">
+						<span class="checkbox-rem"></span>
+						<span class="nameremember">Remember me</span>
+					</label>
+					<input type="submit" class="button-lardge custom" value="Sign in">
+					<a class="forgot-pass" id="forgot-pass" href="#">Forgot your password?</a>
+				</form>
+			</div>
+			<div id="new_account">
+				<form class="new_account" action="http://ecom.webark.io/">
+					<input type="text" placeholder="NAME" class="name">
+					<input type="text" placeholder="E-MAIL" class="email">
+					<input type="password" placeholder="PASSWORD" class="password">
+					<label>
+						<input class="regis-check" type="checkbox" name="checkbox-regis">
+						<span class="checkbox-regis"></span>
+						<span class="nameregistr">I Agree with terms & Conditions</span>
+					</label>
+					<input type="submit" class="button-lardge custom" id="js-open-thank" value="Register">
+				</form>
+				<div class="thank_registr" id="thank_registr"><p>Thank you! now you have acount on Master Mind</p></div>
+			</div>
+		</div>
+	</div>
+</div><!-- My Account Popup End -->
+
+<div class="loader" id="loader">
+	<div class="preloader" id="preloader"></div>
+</div>
+    </div>
+    </form>
+</body>
+</html>
